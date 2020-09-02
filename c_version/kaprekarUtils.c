@@ -44,7 +44,13 @@ int isKaprekar(int n) {
     //split the square into two parts
     first = square / modulus;
     second = square % modulus;
-
+    
+    if ((first % 100 == 0 && numDigits >= 4) && n != first + second) {
+      first = first / 100;
+    } else if ((first % 10 == 0 && numDigits >= 4) && n != first + second) {
+      first = first / 10;
+    }
+   
     //test if the split makes a Kaprekar number
     //the second part cannot be zero and if
     //the sum of the two parts is equal to n, then it is
@@ -53,5 +59,4 @@ int isKaprekar(int n) {
     }
   }
   return 0;
-
 }
